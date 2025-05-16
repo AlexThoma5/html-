@@ -1,5 +1,9 @@
 .heading {
+    color: white;
+    font-size: 2rem;
+    background-color: mediumorchid;
     text-align: center;
+    padding: 2rem;
 }
 
 .game-area {
@@ -19,7 +23,7 @@
 }
 
 .game-btn {
-    width: 30vw;
+    width: 150px;
     height: 115px;
     margin: 5px;
     border-radius: 5%;
