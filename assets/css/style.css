@@ -1,0 +1,47 @@
+.heading {
+    text-align: center;
+}
+
+.game-area {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 85%;
+    height: 90vh;
+    border: 2px solid red;
+    background-color: azure;
+    margin: 0 auto;
+    padding: 1%;
+}
+
+.number-area {
+    width: 85%;
+    margin: 0 auto;
+    border: 2px solid green;
+    background-color: lightgrey;
+}
+
+.game-btn {
+    width: 30vw;
+    aspect-ratio: 1/1;
+    margin: 5px;
+}
+
+.operator-area {
+    width: 85%;
+    height: 70px;
+    border: 2px solid blue;
+    margin: 0 auto;
+}
+
+.operator-btn {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.center-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
