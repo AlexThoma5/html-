@@ -1,3 +1,9 @@
+/* Remove the scroll to make it feel more like an app */
+body {
+    overflow: hidden;
+}
+
+
 /* Heading styles */
 
 .heading {
