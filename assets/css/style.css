@@ -1,10 +1,14 @@
+/* Heading styles */
+
 .heading {
     color: white;
-    font-size: 2rem;
+    font-size: 3rem;
     background-color: mediumorchid;
     text-align: center;
     padding: 2rem;
 }
+
+/* main game-area */
 
 .game-area {
     display: flex;
@@ -16,11 +20,20 @@
     padding: 1%;
 }
 
-.number-area {
+/* Styling for text in score-area */
+p {
+    font-size: 1.5rem;
+}
+
+/* Game panel that holds numbers are operators */
+
+.game-panel {
     width: 85%;
     margin: 0 auto;
     background-color: lightgrey;
 }
+
+/* Game buttons that contain numbers for the 24 game */
 
 .game-btn {
     width: 150px;
@@ -30,12 +43,7 @@
     font-size: 3rem;
 }
 
-.operator-area {
-    width: 85%;
-    height: 70px;
-    background-color: lightgrey;
-    margin: 0 auto;
-}
+/* Styling for operator buttons */
 
 .operator-btn {
     height: 60px;
@@ -50,6 +58,16 @@
     align-items: center;
   }
 
-p {
-    font-size: 1.5rem;
+/* Start and Undo button styles */
+
+.game-controls {
+    width: 85%;
+}
+
+.custom-btn {
+    margin-top: 1rem;
+    text-transform: uppercase;
+    width: 140px;
+    height: 50px;
+    font-size: 15px;
 }
