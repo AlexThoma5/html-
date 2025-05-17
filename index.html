@@ -47,54 +47,50 @@
                     </div>
                 </div>
             </div>
-            <!-- Score and Timer -->
-            <div class="row">
-                <div class="col-6">
-                    <p class="scores">Score: <span id="score">0</span></p>
-                </div>
-                <div class="col-6">
-                    <p class="scores"><span id="timer">02:00s</span></p>
-                </div>
-            </div>
             <!-- Game panel -->
             <div class="game-panel container">
+                <!-- Score and Timer -->
+                <div class="row justify-content-center score-area">
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <p class="score">Score: <span id="score">0</span></p>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <p class="timer"><span id="minutes">02</span>:<span id="seconds">00</span>s</p>
+                    </div>
+                </div>
                 <!-- Number Grid -->
-                <div class="row pt-4 pb-4 gx-0">
+                <div class="row pt-4 pb-4 gx-0 number-grid">
                     <div class="col-6 d-flex justify-content-end">
-                        <button id="operand1" class="game-btn" data-index="0">6</button>
+                        <button class="game-btn" data-index="0"><span id="operand1">?</span></button>
                     </div>
                     <div class="col-6 d-flex justify-content-start">
-                        <button id="operand2" class="game-btn" data-index="1">7</button>
+                        <button class="game-btn" data-index="1"><span id="operand2">?</span></button>
                     </div>
                     <div class="col-6 d-flex justify-content-end">
-                        <button id="operand3" class="game-btn" data-index="2">5</button>
+                        <button class="game-btn" data-index="2"><span id="operand3">?</span></button>
                     </div>
                     <div class="col-6 d-flex justify-content-start">
-                        <button id="operand4" class="game-btn" data-index="3">6</button>
+                        <button class="game-btn" data-index="3"><span id="operand4">?</span></button>
                     </div>
                 </div>
                 <!-- Operator area -->
-                <div class="operator-area pb-4">
+                <div class="operator-area pb-4 disabled">
                     <div class="row h-100 justify-content-center">
-                        <div class="col-12 col-md-6 col-lg-8 d-flex">
+                        <div class="col-12 col-md-8 d-flex operator-area-size">
                             <div class="col-3 center-flex">
-                                <button data-type="addition" id="plus" class="operator-btn">
-                                    <i class="fas fa-plus"></i>
+                                <button id="plus" class="operator-btn"><span class="hide">+</span><i class="fas fa-plus"></i>
                                 </button>
                             </div>
                             <div class="col-3 center-flex">
-                                <button data-type="minus" id="minus" class="operator-btn">
-                                    <i class="fas fa-minus"></i>
+                                <button id="minus" class="operator-btn"><span class="hide">-</span><i class="fas fa-minus"></i>
                                 </button>
                             </div>
                             <div class="col-3 center-flex">
-                                <button data-type="times" id="multiply" class="operator-btn">
-                                    <i class="fas fa-times"></i>
+                                <button id="multiply" class="operator-btn"><span class="hide">*</span><i class="fas fa-times"></i>
                                 </button>
                             </div>
                             <div class="col-3 center-flex">
-                                <button data-type="divide" id="divide" class="operator-btn">
-                                    <i class="fas fa-divide"></i>
+                                <button id="divide" class="operator-btn"><span class="hide">/</span><i class="fas fa-divide"></i>
                                 </button>
                             </div>
                         </div>
@@ -103,14 +99,31 @@
             </div>
             <!-- Start and undo button area -->
             <div class="container game-controls">
-                <div class="row">
-                    <div class="col-6">
-                        <button type="button" class="btn btn-primary btn-lg custom-btn">Start Game</button>
+                <div class="row justify-content-center">
+                    <div class="col-6 col-md-4">
+                        <button data-type="start" class="btn btn-primary btn-lg custom-btn">Start Game</button>
                     </div>
-                    <div class="col-6">
-                        <button type="button" class="btn btn-primary btn-lg custom-btn">Undo</button>
+                    <div class="col-6 col-md-4">
+                        <button data-type="undo" class="btn btn-primary btn-lg custom-btn">Undo</button>
                     </div>
                 </div>
+            </div>
+        </div>
+        <!-- Game ending modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">GAME OVER</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Your final score was <span id="finalScore"></span>!</p>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-type="start">New Game</button>
+                </div>
+            </div>
             </div>
         </div>
     </main>

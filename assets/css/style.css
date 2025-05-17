@@ -1,8 +1,23 @@
+/* Global styles */
+
 /* Remove the scroll to make it feel more like an app */
 body {
     overflow: hidden;
 }
 
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.selected {
+    background-color: red;
+    transform: scale(1.05);
+}
+
+.hide {
+    display: none;
+}
 
 /* Heading styles */
 
@@ -27,16 +42,29 @@ body {
 }
 
 /* Styling for text in score-area */
-p {
-    font-size: 1.5rem;
+.score-area {
+    background-color: azure;
 }
 
-/* Game panel that holds numbers are operators */
+.score-area p {
+    font-size: 1.5rem;
+    margin: 5px;
+}
+
+/* Game panel that holds numbers and operators */
 
 .game-panel {
     width: 85%;
+    max-width: 550px;
     margin: 0 auto;
     background-color: lightgrey;
+}
+
+/* Number grid */
+
+/* Min-height added to stop number grid collapsing when numbers are used */
+.number-grid {
+    min-height: 298px; 
 }
 
 /* Game buttons that contain numbers for the 24 game */
@@ -50,6 +78,9 @@ p {
 }
 
 /* Styling for operator buttons */
+.operator-area-size {
+    max-width: 360px;
+}
 
 .operator-btn {
     height: 60px;
@@ -68,6 +99,7 @@ p {
 
 .game-controls {
     width: 85%;
+    max-width: 550px;
 }
 
 .custom-btn {

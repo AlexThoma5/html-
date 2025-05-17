@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function(){
     // Function that starts the game timer
     function startGameTimer() {
 
-        let secondsLeft = 10;
+        let secondsLeft = 100;
 
         const timerId = setInterval(() => {
 
@@ -212,7 +212,7 @@ document.addEventListener("DOMContentLoaded", function(){
             // Select new operator
             clickedOp.classList.add("selected");
             gameState.lastClickedOp = clickedOp;
-            gameState.operator = clickedOp.innerText;
+            gameState.operator = clickedOp.textContent.trim();
             gameState.step = 3;
         }
 
