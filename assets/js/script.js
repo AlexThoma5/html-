@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", function(){
             if (this.getAttribute("data-type") === "start"){
                 resetGameState();
                 document.getElementById("score").innerText = 0; // Resets score at DOM
+                document.querySelector(".number-grid").classList.remove("disabled"); // Enable the number-grid once game has begun
+                document.getElementById("start").classList.add("disabled"); // Disable start button to prevent user pressing more than once.
                 runGame();
                 startGameTimer();
             } else if (this.classList.contains("game-btn")){
@@ -60,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function(){
     // Function that starts the game timer
     function startGameTimer() {
 
-        let secondsLeft = 100;
+        let secondsLeft = 120;
 
         const timerId = setInterval(() => {
 

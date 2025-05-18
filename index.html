@@ -35,13 +35,20 @@
                     <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                        <h1 class="modal-title fs-5 text-center w-100" id="rulesModalLabel">24 Game Rules</h1>
+                        <h1 class="modal-title fs-5 text-center w-100" id="rulesModalLabel">How to Play the 24 Game</h1>
                         </div>
-                        <div class="modal-body">
-                        ...
-                        </div>
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <div class="modal-body text-start">                          
+                            <ul>
+                              <li>You have <strong>2 minutes</strong> to solve as many puzzles as possible.</li>
+                              <li>Click a number to select it, then choose an operation: <strong>+, -, ×, or ÷</strong>. Followed by the second number.</li>
+                              <li>The result replaces the two numbers you used.</li>
+                              <li>Keep going until only <strong>one number</strong> remains.</li>
+                              <li>If that number is <strong>24</strong>, you win!</li>
+                              <li>If you go down the wrong path, don't worry you can use the <strong>UNDO</strong> button as many times as you need.</li>
+                            </ul>
+                          </div>
+                        <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Got it!</button>
                         </div>
                     </div>
                     </div>
@@ -59,7 +66,7 @@
                     </div>
                 </div>
                 <!-- Number Grid -->
-                <div class="row pt-4 pb-4 gx-0 number-grid">
+                <div class="row pt-4 pb-4 gx-0 number-grid disabled">
                     <div class="col-6 d-flex justify-content-end">
                         <button class="game-btn" data-index="0"><span id="operand1">?</span></button>
                     </div>
@@ -101,7 +108,7 @@
             <div class="container game-controls">
                 <div class="row justify-content-center">
                     <div class="col-6 col-md-4">
-                        <button data-type="start" class="btn btn-primary btn-lg custom-btn">Start Game</button>
+                        <button data-type="start" id="start" class="btn btn-primary btn-lg custom-btn">Start Game</button>
                     </div>
                     <div class="col-6 col-md-4">
                         <button data-type="undo" class="btn btn-primary btn-lg custom-btn">Undo</button>
@@ -113,14 +120,13 @@
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">GAME OVER</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-header justify-content-center">
+                <h1 class="modal-title fs-5 text-center" id="staticBackdropLabel">GAME OVER</h1>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body text-center">
                     <p>Your final score was <span id="finalScore"></span>!</p>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer justify-content-center">
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-type="start">New Game</button>
                 </div>
             </div>
