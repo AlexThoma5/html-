@@ -133,6 +133,19 @@ body {
     letter-spacing: 1px;
 }
 
+.custom-btn:hover {
+    border: 2px solid var(--secondary-highlight-color);
+    color: var(--secondary-highlight-color);
+    background: white;
+    margin-top: 1rem;
+    text-transform: uppercase;
+    width: 140px;
+    height: 50px;
+    font-size: 15px;
+    letter-spacing: 1px;
+    transform: scale(1.05);
+}
+
 /* Media queries */
 
 /* For small mobile devices below 355px */
