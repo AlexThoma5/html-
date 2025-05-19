@@ -8,6 +8,7 @@
     --secondary-font: "Roboto", sans-serif;
     --primary-color: linear-gradient(90deg,rgba(51, 51, 153, 1) 0%, rgba(255, 0, 204, 1) 100%);
     --hightlight-color: #333399;
+    --secondary-highlight-color: #FF00CC;
     --secondary-color: #FAF9F6;
 }
 
@@ -121,7 +122,9 @@ body {
 }
 
 .custom-btn {
-    background: var(--primary-color);
+    border: 2px solid white;
+    color: white;
+    background: var(--secondary-highlight-color);
     margin-top: 1rem;
     text-transform: uppercase;
     width: 140px;
