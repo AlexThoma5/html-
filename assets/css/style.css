@@ -1,8 +1,22 @@
+/* Google Font import */
+
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Roboto:wght@100..900&display=swap");
+
+/* CSS Variables */
+:root {
+    --primary-font: "Fredoka", sans-serif;
+    --secondary-font: "Roboto", sans-serif;
+    --primary-color: linear-gradient(90deg,rgba(51, 51, 153, 1) 0%, rgba(255, 0, 204, 1) 100%);
+    --hightlight-color: #333399;
+    --secondary-color: #FAF9F6;
+}
+
 /* Global styles */
 
-/* Remove the scroll to make it feel more like an app */
 body {
-    overflow: hidden;
+    overflow: hidden; /* Remove the scroll to make it feel more like an app */
+    font-family: var(--secondary-font);
+    letter-spacing: 1px;
 }
 
 .disabled {
@@ -24,9 +38,11 @@ body {
 .heading {
     color: white;
     font-size: 3rem;
-    background-color: mediumorchid;
+    background: linear-gradient(90deg,rgba(51, 51, 153, 1) 0%, rgba(255, 0, 204, 1) 100%);
     text-align: center;
     padding: 2rem;
+    font-family: var(--primary-font);
+    margin-bottom: 0;
 }
 
 /* main game-area */
@@ -36,17 +52,19 @@ body {
     flex-direction: column;
     text-align: center;
     height: 90vh;
-    background-color: azure;
+    background-color: var(--hightlight-color);
     margin: 0 auto;
     padding: 1%;
 }
 
 /* Styling for text in score-area */
+
 .score-area {
-    background-color: azure;
+    background-color: var(--hightlight-color);
 }
 
 .score-area p {
+    color: white;
     font-size: 1.5rem;
     margin: 5px;
 }
@@ -57,7 +75,7 @@ body {
     width: 85%;
     max-width: 550px;
     margin: 0 auto;
-    background-color: lightgrey;
+    background-color: var(--secondary-color);
 }
 
 /* Number grid */
@@ -103,9 +121,25 @@ body {
 }
 
 .custom-btn {
+    background: var(--primary-color);
     margin-top: 1rem;
     text-transform: uppercase;
     width: 140px;
     height: 50px;
     font-size: 15px;
+    letter-spacing: 1px;
+}
+
+/* Media queries */
+
+/* For small mobile devices below 355px */
+@media  (max-width: 355px) {
+    .custom-btn {
+        margin-top: 1rem;
+        text-transform: uppercase;
+        width: 120px;
+        height: 50px;
+        font-size: 15px;
+        letter-spacing: 1px;
+    }    
 }

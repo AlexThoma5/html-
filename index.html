@@ -1,142 +1,250 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap 5 CSS -->
     <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-    crossorigin="anonymous"
-    >
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous">
     <!-- font awesome and google fonts -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Raleway%7CRighteous" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous">
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway%7CRighteous"
+      rel="stylesheet">
     <title>24 Game</title>
     <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body class="min-vh-100">
+  </head>
+  <body class="min-vh-100">
     <header>
-        <h1 class="heading pt-4">24 Game</h1>
+      <h1 class="heading pt-4">24 Game</h1>
     </header>
     <main>
-        <!-- Game panel -->
-        <div class="game-area">
-            <div class="rules-area my-3">
-                <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#rulesModal">
-                    Rules
-                </button>
+      <!-- Game panel -->
+      <div class="game-area">
+        <div class="rules-area my-3">
+          <button
+            type="button"
+            class="btn btn-primary btn-lg"
+            data-bs-toggle="modal"
+            data-bs-target="#rulesModal"
+          >
+            Rules
+          </button>
 
-                <!--Rules Bootsrap Modal -->
-                <div class="modal fade" id="rulesModal" tabindex="-1" aria-labelledby="rulesModal" aria-hidden="true">
-                    <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h1 class="modal-title fs-5 text-center w-100" id="rulesModalLabel">How to Play the 24 Game</h1>
-                        </div>
-                        <div class="modal-body text-start">                          
-                            <ul>
-                              <li>You have <strong>2 minutes</strong> to solve as many puzzles as possible.</li>
-                              <li>Click a number to select it, then choose an operation: <strong>+, -, ×, or ÷</strong>. Followed by the second number.</li>
-                              <li>The result replaces the two numbers you used.</li>
-                              <li>Keep going until only <strong>one number</strong> remains.</li>
-                              <li>If that number is <strong>24</strong>, you win!</li>
-                              <li>If you go down the wrong path, don't worry you can use the <strong>UNDO</strong> button as many times as you need.</li>
-                            </ul>
-                          </div>
-                        <div class="modal-footer justify-content-center">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Got it!</button>
-                        </div>
-                    </div>
-                    </div>
+          <!--Rules Bootsrap Modal -->
+          <div
+            class="modal fade"
+            id="rulesModal"
+            tabindex="-1"
+            aria-labelledby="rulesModal"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1
+                    class="modal-title fs-5 text-center w-100"
+                    id="rulesModalLabel"
+                  >
+                    How to Play the 24 Game
+                  </h1>
                 </div>
-            </div>
-            <!-- Game panel -->
-            <div class="game-panel container">
-                <!-- Score and Timer -->
-                <div class="row justify-content-center score-area">
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <p class="score">Score: <span id="score">0</span></p>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <p class="timer"><span id="minutes">02</span>:<span id="seconds">00</span>s</p>
-                    </div>
-                </div>
-                <!-- Number Grid -->
-                <div class="row pt-4 pb-4 gx-0 number-grid disabled">
-                    <div class="col-6 d-flex justify-content-end">
-                        <button class="game-btn" data-index="0"><span id="operand1">?</span></button>
-                    </div>
-                    <div class="col-6 d-flex justify-content-start">
-                        <button class="game-btn" data-index="1"><span id="operand2">?</span></button>
-                    </div>
-                    <div class="col-6 d-flex justify-content-end">
-                        <button class="game-btn" data-index="2"><span id="operand3">?</span></button>
-                    </div>
-                    <div class="col-6 d-flex justify-content-start">
-                        <button class="game-btn" data-index="3"><span id="operand4">?</span></button>
-                    </div>
-                </div>
-                <!-- Operator area -->
-                <div class="operator-area pb-4 disabled">
-                    <div class="row h-100 justify-content-center">
-                        <div class="col-12 col-md-8 d-flex operator-area-size">
-                            <div class="col-3 center-flex">
-                                <button id="plus" class="operator-btn"><span class="hide">+</span><i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                            <div class="col-3 center-flex">
-                                <button id="minus" class="operator-btn"><span class="hide">-</span><i class="fas fa-minus"></i>
-                                </button>
-                            </div>
-                            <div class="col-3 center-flex">
-                                <button id="multiply" class="operator-btn"><span class="hide">*</span><i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                            <div class="col-3 center-flex">
-                                <button id="divide" class="operator-btn"><span class="hide">/</span><i class="fas fa-divide"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Start and undo button area -->
-            <div class="container game-controls">
-                <div class="row justify-content-center">
-                    <div class="col-6 col-md-4">
-                        <button data-type="start" id="start" class="btn btn-primary btn-lg custom-btn">Start Game</button>
-                    </div>
-                    <div class="col-6 col-md-4">
-                        <button data-type="undo" class="btn btn-primary btn-lg custom-btn">Undo</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Game ending modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header justify-content-center">
-                <h1 class="modal-title fs-5 text-center" id="staticBackdropLabel">GAME OVER</h1>
-                </div>
-                <div class="modal-body text-center">
-                    <p>Your final score was <span id="finalScore"></span>!</p>
+                <div class="modal-body text-start">
+                  <ul>
+                    <li>
+                      You have <strong>2 minutes</strong> to solve as many
+                      puzzles as possible.
+                    </li>
+                    <li>
+                      Click a number to select it, then choose an operation:
+                      <strong>+, -, ×, or ÷</strong>. Followed by the second
+                      number.
+                    </li>
+                    <li>The result replaces the two numbers you used.</li>
+                    <li>
+                      Keep going until only <strong>one number</strong> remains.
+                    </li>
+                    <li>If that number is <strong>24</strong>, you win!</li>
+                    <li>
+                      If you go down the wrong path, don't worry you can use the
+                      <strong>UNDO</strong> button as many times as you need.
+                    </li>
+                  </ul>
                 </div>
                 <div class="modal-footer justify-content-center">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-type="start">New Game</button>
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Got it!
+                  </button>
                 </div>
+              </div>
             </div>
-            </div>
+          </div>
         </div>
+        <!-- Game panel -->
+        <div class="game-panel container">
+          <!-- Score and Timer -->
+          <div class="row justify-content-center score-area">
+            <div class="col-6 col-md-4 col-lg-3">
+              <p class="score">Score: <span id="score">0</span></p>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+              <p class="timer">
+                <span id="minutes">02</span>:<span id="seconds">00</span>s
+              </p>
+            </div>
+          </div>
+          <!-- Number Grid -->
+          <div class="row pt-4 pb-4 gx-0 number-grid disabled">
+            <div class="col-6 d-flex justify-content-end">
+              <button class="game-btn" data-index="0">
+                <span id="operand1">?</span>
+              </button>
+            </div>
+            <div class="col-6 d-flex justify-content-start">
+              <button class="game-btn" data-index="1">
+                <span id="operand2">?</span>
+              </button>
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+              <button class="game-btn" data-index="2">
+                <span id="operand3">?</span>
+              </button>
+            </div>
+            <div class="col-6 d-flex justify-content-start">
+              <button class="game-btn" data-index="3">
+                <span id="operand4">?</span>
+              </button>
+            </div>
+          </div>
+          <!-- Operator area -->
+          <div class="operator-area pb-4 disabled">
+            <div class="row h-100 justify-content-center">
+              <div class="col-12 col-md-8 d-flex operator-area-size">
+                <div class="col-3 center-flex">
+                  <button id="plus" class="operator-btn">
+                    <span class="hide">+</span><i class="fas fa-plus"></i>
+                  </button>
+                </div>
+                <div class="col-3 center-flex">
+                  <button id="minus" class="operator-btn">
+                    <span class="hide">-</span><i class="fas fa-minus"></i>
+                  </button>
+                </div>
+                <div class="col-3 center-flex">
+                  <button id="multiply" class="operator-btn">
+                    <span class="hide">*</span><i class="fas fa-times"></i>
+                  </button>
+                </div>
+                <div class="col-3 center-flex">
+                  <button id="divide" class="operator-btn">
+                    <span class="hide">/</span><i class="fas fa-divide"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Start and undo button area -->
+        <div class="container game-controls">
+          <div class="row justify-content-center">
+            <div class="col-6 col-md-4">
+              <button
+                data-type="start"
+                id="start"
+                class="btn btn-primary btn-lg custom-btn"
+              >
+                Start Game
+              </button>
+            </div>
+            <div class="col-6 col-md-4">
+              <button
+                data-type="undo"
+                class="btn btn-primary btn-lg custom-btn"
+              >
+                Undo
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
+    <!-- Game ending modal -->
+    <div
+      class="modal fade"
+      id="gameEndingModal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="gameEndingLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header justify-content-center">
+            <h1 class="modal-title fs-5 text-center" id="gameEndingLabel">
+              GAME OVER
+            </h1>
+          </div>
+          <div class="modal-body text-center">
+            <p>Your final score was <span id="finalScore"></span>!</p>
+            <p id="game-end-message"></p>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+              data-type="start"
+            >
+              New Game
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Error modal -->
+    <div class="modal" id="errorModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header justify-content-center">
+            <h5 class="modal-title">Oops!</h5>
+          </div>
+          <div class="modal-body text-center">
+            <p id="error-message"></p>
+            <p>Invalid result: your answer must be a <strong>positive whole</strong> number!</p>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
-    
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+      crossorigin="anonymous"
+    ></script>
+
     <!-- Custom JS file -->
     <script src="assets/js/script.js"></script>
-</body>
+  </body>
 </html>

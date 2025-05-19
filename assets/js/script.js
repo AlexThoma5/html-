@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function(){
     function getRandomSet() {
 
         // Array of number sets that will be used in the game
-        const numbersArray = [[8,8,2,7], [8,8,4,1], [6,6,8,2], [2,7,4,8], [1,5,6,3]];
+        const numbersArray = [[8,8,2,7], [8,8,4,1], [6,6,8,2], [2,7,4,8], [1,5,6,3], [2,4,8,9], [8,7,1,8], [1,3,5,6]];
 
         // Creates random number between 0 and the array length
         const randomNum = Math.floor(Math.random() * numbersArray.length);
@@ -150,10 +150,10 @@ document.addEventListener("DOMContentLoaded", function(){
 
         // Loops through number buttons to check if they are empty, if they are update UI and remove empty buttons
         for (let button of numberButtons) {
-            if (button.innerText === "") {
-                button.style.display = 'none'
+            if (button.innerText.trim() === "") {
+                button.style.display = 'none';
             } else {
-                button.style.display = 'inline-block'
+                button.style.display = 'inline-block';
             }
         }
 
@@ -248,7 +248,7 @@ document.addEventListener("DOMContentLoaded", function(){
             gameState.step = 4;
             manageGameState(); // recalls game state function, to perform step 4  
         } else {
-            alert("You can only use whole and positive numbers!");
+            showErrorModal(answer); // calls error modal if the answer isnt viable
             gameState.step = 1;
             manageGameState();
         }
@@ -324,7 +324,7 @@ document.addEventListener("DOMContentLoaded", function(){
      */
     function showScoreModal() {
 
-        const modal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+        const modal = new bootstrap.Modal(document.getElementById('gameEndingModal'));
         modal.show();
         
         // Updates the modal to match the users final score
@@ -332,12 +332,39 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     /**
-     * Gets the current score from the DOM and stores it
+     * Updates the game ending modal content to reflect score from DOM
      */
     function updateModalContent() {
 
         let finalScore = parseInt(document.getElementById("score").innerText);
         document.getElementById("finalScore").innerText = finalScore;
+
+        // Updates user message depending on their final score
+        const message = document.getElementById('game-end-message');
+
+        if (finalScore === 0 ) {
+             message.innerText = "Hey, it happens. Shake it off and try again!"
+        } else if (finalScore < 5) {
+            message.innerText = "Good start! Keep pushing and sharpening your skills."
+        } else if (finalScore < 9) {
+            message.innerText = "Good effort! Keep practising and you'll be unstoppable."
+        } else if (finalScore < 13) {
+            message.innerText = "Great job! You've got sharp math skills."
+        } else if (finalScore >= 13) {
+            message.innerText = "Incredible! You're a 24 master!"
+        }
+    }
+
+    /**
+     * Displays error modal to user when they make a mistake in the game
+     */
+    function showErrorModal(answer) {
+
+        const errorMessage = document.getElementById("error-message");
+        errorMessage.innerText = `Your result is: ${answer}.`
+
+        const modal = new bootstrap.Modal(document.getElementById('errorModal'));
+        modal.show();
     }
 
     function resetGameState() {
