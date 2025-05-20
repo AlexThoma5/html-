@@ -123,7 +123,27 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
+
+#plus {
+    color: green;
+    border: 2px solid green;
+}
+
+#minus {
+    color: red;
+    border: 2px solid red;
+}
+
+#multiply {
+    color: blue;
+    border: 2px solid blue;
+}
+
+#divide {
+    color: orange;
+    border: 2px solid orange;
+}
 
 /* Start and Undo button styles */
 
