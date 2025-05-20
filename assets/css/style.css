@@ -102,6 +102,11 @@ body {
   color: white;
   box-shadow: inset 2px 2px 5px #2c80b4;  /* 3d button background taken from chatgpt */
 }
+
+.min-height {
+    min-height: 130px /* min-height added to game-btn's container to prevent them collapsing */
+}
+
 /* Styling for operator buttons */
 .operator-area-size {
     max-width: 360px;
