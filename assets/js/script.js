@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function(){
             } else if (this.getAttribute("data-type") === "quit") {
                 location.reload();
             }
-        })
+        });
     }
 
     // Game state object lives here (idea taken from chatGPT)
@@ -80,14 +80,14 @@ document.addEventListener("DOMContentLoaded", function(){
             if (secondsLeft >= 0) {
                 // Update display to reflect how much time the user has remaining
                 updateTimerDisplay(secondsLeft);
-            };
+            }
 
         }, 1000);
     }
 
     /**
      * Updates UI to reflect timer
-     * @param {*} secondsLeft - takes a number as argument
+     * @param {number} secondsLeft - takes a number as argument
      */
     function updateTimerDisplay(secondsLeft){
 
@@ -239,13 +239,11 @@ document.addEventListener("DOMContentLoaded", function(){
             gameState.operator = clickedOp.textContent.trim();
             gameState.step = 3;
         }
-
-        console.log(`op: ${gameState.operator}`)
     }
 
     /**
      * Performs a calculation on two numbers stored in `gameState` using the provided operator.
-     * @param {string} operator - The arithmetic operator to apply ('+', '-', '*', '/').
+     * @param {string} operator - The operator to apply ('+', '-', '*', '/').
      */
     function performCalculation(operator) {
         
@@ -321,7 +319,7 @@ document.addEventListener("DOMContentLoaded", function(){
             gameState.round--;
         } else if (gameState.round === 2) {
             gameState.activeArray = gameState.initialArrayCopy.slice();
-            gameState.round--
+            gameState.round--;
         } else {
             return;
         }
@@ -379,15 +377,15 @@ document.addEventListener("DOMContentLoaded", function(){
         const message = document.getElementById('game-end-message');
 
         if (finalScore === 0 ) {
-             message.innerText = "Hey, it happens. Shake it off and try again!"
+             message.innerText = "Hey, it happens. Shake it off and try again!";
         } else if (finalScore < 5) {
-            message.innerText = "Good start! Keep pushing and sharpening your skills."
+            message.innerText = "Good start! Keep pushing and sharpening your skills.";
         } else if (finalScore < 9) {
-            message.innerText = "Good effort! Keep practising and you'll be unstoppable."
+            message.innerText = "Good effort! Keep practising and you'll be unstoppable.";
         } else if (finalScore < 13) {
-            message.innerText = "Great job! You've got sharp math skills."
+            message.innerText = "Great job! You've got sharp math skills.";
         } else if (finalScore >= 13) {
-            message.innerText = "Incredible! You're a 24 master!"
+            message.innerText = "Incredible! You're a 24 master!";
         }
     }
 
@@ -397,7 +395,7 @@ document.addEventListener("DOMContentLoaded", function(){
     function showErrorModal(answer) {
 
         const errorMessage = document.getElementById("error-message");
-        errorMessage.innerText = `Your result is: ${answer}.`
+        errorMessage.innerText = `Your result is: ${answer}.`;
 
         const modal = new bootstrap.Modal(document.getElementById('errorModal'));
         modal.show();
@@ -434,4 +432,4 @@ document.addEventListener("DOMContentLoaded", function(){
         document.querySelector(".operator-area").classList.add("disabled");
     }
 
-})
+});
