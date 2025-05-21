@@ -30,7 +30,7 @@ body {
 }
 
 /* Added to prevent accidental zooming in on mobile devices */
-button {
+body {
     touch-action: manipulation;
 }
 
