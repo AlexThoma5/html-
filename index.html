@@ -43,7 +43,7 @@
             class="modal fade"
             id="rulesModal"
             tabindex="-1"
-            aria-labelledby="rulesModal"
+            aria-labelledby="rulesModalLabel"
           >
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
@@ -94,10 +94,10 @@
         <div class="game-panel container">
           <!-- Score and Timer -->
           <div class="row justify-content-center score-area">
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-6 col-md-4">
               <p class="score">Score: <span id="score">0</span></p>
             </div>
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-6 col-md-4">
               <p class="timer">
                 <span id="minutes">02</span>:<span id="seconds">00</span>s
               </p>
@@ -219,11 +219,11 @@
       </div>
     </div>
     <!-- Error modal -->
-    <div class="modal" id="errorModal" tabindex="-1">
+    <div class="modal" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header justify-content-center">
-            <h5 class="modal-title">Oops!</h5>
+            <h5 class="modal-title" id="errorModalLabel">Oops!</h5>
           </div>
           <div class="modal-body text-center">
             <p id="error-message"></p>

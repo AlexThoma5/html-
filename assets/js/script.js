@@ -1,8 +1,4 @@
 // Wait for the DOM to finish loading before running the game
-/** The main game "loop", called when the game is first loaded
- * and after the users answer has been processed
- */
-
 document.addEventListener("DOMContentLoaded", function(){
     
     // Get the button Elements and add event listeners to them
@@ -53,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function(){
         };
     
     /**
-     * The function that starts the game
+     * Initialises and starts a new game round
      */
     function runGame() {
 
@@ -62,7 +58,9 @@ document.addEventListener("DOMContentLoaded", function(){
         displayNumbers(); // Displays the active array to the user
     }
 
-    // Function that starts the game timer
+    /**
+     * Starts the game timer and handles 
+     */
     function startGameTimer() {
 
         let secondsLeft = 120;
@@ -87,6 +85,10 @@ document.addEventListener("DOMContentLoaded", function(){
         }, 1000);
     }
 
+    /**
+     * Updates UI to reflect timer
+     * @param {*} secondsLeft - takes a number as argument
+     */
     function updateTimerDisplay(secondsLeft){
 
         // Convert the seconds left into a minutes variable
@@ -100,8 +102,9 @@ document.addEventListener("DOMContentLoaded", function(){
         document.getElementById("seconds").innerText = `${seconds}`.padStart(2, "0");
     }
 
-    // Function that is called after every time the user presses a number
-    // Mananges the how game behaves depending on what step it is in
+    /**
+    * Manages the current state of the game based on the step value in `gameState`.
+    */
     function manageGameState() {
        
         if (gameState.step === 2) {
@@ -121,15 +124,20 @@ document.addEventListener("DOMContentLoaded", function(){
         } else if (gameState.step === 1) {
             resetGameState(); // Resets gameState if user tries to calculate a negative number
         }
-
-        console.log("--------------------------------------------------------------------------");
-        console.log(gameState);
     }
 
+    /**
+     * Randomly gets a set of numbers from numbersArray to be used in the game
+     * @returns Random set of four numbers
+     */
     function getRandomSet() {
 
         // Array of number sets that will be used in the game
-        const numbersArray = [[8,8,2,7], [8,8,4,1], [6,6,8,2], [2,7,4,8], [1,5,6,3], [2,4,8,9], [8,7,1,8], [1,3,5,6]];
+        const numbersArray = [[8,8,2,7], [8,8,4,1], [6,6,8,2], [2,7,4,8], [1,5,6,3], [2,4,8,9], [8,7,1,8], [1,3,5,6], [2,4,4,6], [2,2,3,7],
+         [1,2,5,6], [2,2,6,7], [3,6,8,9], [1,3,7,8], [3,3,5,9], [4,6,6,8], [1,2,4,9], [8,7,8,1], [3,4,4,5], [5,5,9,1], [2,4,6,7], [1,2,7,8],
+          [1,4,4,6], [2,3,3,7], [8,8,7,9], [1,5,6,8], [2,4,8,9], [5,6,6,9], [7,7,7,3], [5,7,8,8], [3,5,8,9], [2,5,7,9], [3,4,7,8], [2,3,4,8],
+        [5,7,7,5], [1,4,4,9], [2,2,5,7], [1,3,8,8], [4,5,5,7], [1,5,6,7], [2,2,6,9], [3,4,2,6], [4,6,6,8], [4,5,2,2] [4,4,2,8], [3,4,5,5], 
+        [2,9,3,5], [8,2,6,2], [2,4,4,1], [1,5,8,8], [3,3,4,8]];
 
         // Creates random number between 0 and the array length
         const randomNum = Math.floor(Math.random() * numbersArray.length);
@@ -140,6 +148,9 @@ document.addEventListener("DOMContentLoaded", function(){
         return randomSet;
     }
 
+    /**
+     * Displays the numbers to User and removes empty buttons
+     */
     function displayNumbers() {
         
         // Inserts the numbers from the selected array into each button
@@ -162,6 +173,10 @@ document.addEventListener("DOMContentLoaded", function(){
 
     }
 
+    /**
+     * Handles user clicks on number buttons, updating game state accordingly.
+     * @param {Event} event - The click event triggered by a number button.
+     */
     function handleNumberClick(event) {
 
         // stores clicked button into a variable
@@ -199,6 +214,10 @@ document.addEventListener("DOMContentLoaded", function(){
         manageGameState();
     }
 
+    /**
+     * Handles user clicks on operator buttons, updating game state accordingly.
+     * @param {Event} event - The click event triggered by an operator button.
+     */
     function handleOperatorClick(event) {
         // Stores the clicked operator into a variable
         const clickedOp = event.currentTarget;
@@ -224,7 +243,10 @@ document.addEventListener("DOMContentLoaded", function(){
         console.log(`op: ${gameState.operator}`)
     }
 
-    // function to perform calculation between selected numbers and update step
+    /**
+     * Performs a calculation on two numbers stored in `gameState` using the provided operator.
+     * @param {string} operator - The arithmetic operator to apply ('+', '-', '*', '/').
+     */
     function performCalculation(operator) {
         
         let answer;
@@ -257,6 +279,9 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     }
 
+    /**
+     * Updates active array to reflect recent calculation
+     */
     function updateNumberArray() {
         
         // Sets the num1 number to null in the array
@@ -266,6 +291,9 @@ document.addEventListener("DOMContentLoaded", function(){
         gameState.activeArray[gameState.num2ButtonIndex] = gameState.num3;
     }
 
+    /**
+     * Takes a snapshot of the current array and stores it into a variable depending on round
+     */
     function storeNumberArray() {
 
         if (gameState.round === 1) {
@@ -280,7 +308,9 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     }
 
-    // Reverts current active array back to previous version depending on round
+    /**
+     * Reverts current active array back to previous version depending on round
+     */
     function revertArray() {
 
         if (gameState.round === 4) {
@@ -299,6 +329,9 @@ document.addEventListener("DOMContentLoaded", function(){
         displayNumbers();
     }
 
+    /**
+     * Checks if the user has won a point. If so, it runs the game again to give the user another question
+     */
     function checkForWin() {
 
         // Filters the numbers array, removes all falsey values. Only numbers remain.
@@ -370,6 +403,10 @@ document.addEventListener("DOMContentLoaded", function(){
         modal.show();
     }
 
+    /**
+    * Resets all relevant `gameState` variables to their initial values,
+    * preparing the game for a new turn or to recover from an invalid action.
+    */
     function resetGameState() {
         
         // Removes class from any highlighted button when gameState is reset - Checks if it exists first to prevent error
