@@ -7,9 +7,9 @@
     --primary-font: "Fredoka", sans-serif;
     --secondary-font: "Roboto", sans-serif;
     --primary-color: linear-gradient(90deg,rgba(51, 51, 153, 1) 0%, rgba(255, 0, 204, 1) 100%);
+    --secondary-color: #FAF9F6;
     --hightlight-color: #333399;
     --secondary-highlight-color: #FF00CC;
-    --secondary-color: #FAF9F6;
 }
 
 /* Global styles */
@@ -95,6 +95,7 @@ body {
     padding: 1rem 1.5rem;
     margin: 0.5rem;
     transition: all 0.2s ease-in-out;
+    color: #1a6ba2;
 }
 
 .game-btn.selected {
@@ -165,7 +166,7 @@ body {
     color: white;
     background: orange;
 }
-/* Start and Undo button styles */
+/* Start, quit and Undo button styles */
 
 .game-controls {
     width: 85%;
@@ -196,6 +197,32 @@ body {
     font-size: 15px;
     letter-spacing: 1px;
     transform: scale(1.05);
+}
+
+#quit {
+    font-weight: 600;
+    border: 2px solid white;
+    color: black;
+    background: orange;
+    margin-top: 1rem;
+    text-transform: uppercase;
+    width: 140px;
+    height: 50px;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+#quit:hover {
+    font-weight: 600;
+    border: 2px solid white;
+    color: white;
+    background: rgb(213, 139, 0);
+    margin-top: 1rem;
+    text-transform: uppercase;
+    width: 140px;
+    height: 50px;
+    font-size: 15px;
+    letter-spacing: 1px;
 }
 
 /* Media queries */

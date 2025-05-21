@@ -14,7 +14,8 @@ document.addEventListener("DOMContentLoaded", function(){
                 resetGameState();
                 document.getElementById("score").innerText = 0; // Resets score at DOM
                 document.querySelector(".number-grid").classList.remove("disabled"); // Enable the number-grid once game has begun
-                document.getElementById("start").classList.add("disabled"); // Disable start button to prevent user pressing more than once.
+                document.getElementById("start").classList.add("hide"); // Disable start button to prevent user pressing more than once.
+                document.getElementById("quit").style.display = 'inline-block';
                 runGame();
                 startGameTimer();
             } else if (this.classList.contains("game-btn")){
@@ -23,7 +24,9 @@ document.addEventListener("DOMContentLoaded", function(){
                 handleOperatorClick(event);
             } else if (this.getAttribute("data-type") === "undo") {
                 revertArray();
-            } 
+            } else if (this.getAttribute("data-type") === "quit") {
+                location.reload();
+            }
         })
     }
 
